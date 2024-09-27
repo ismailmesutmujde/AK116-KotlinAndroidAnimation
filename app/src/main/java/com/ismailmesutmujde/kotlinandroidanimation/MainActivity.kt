@@ -20,7 +20,8 @@ class MainActivity : AppCompatActivity() {
         bindingMain.buttonStart.setOnClickListener {
             //Toast.makeText(applicationContext, "TEST", Toast.LENGTH_SHORT).show()
             //alphaAnimation()
-            scaleAnimation()
+            //scaleAnimation()
+            rotateAnimation()
         }
 
     }
@@ -37,5 +38,12 @@ class MainActivity : AppCompatActivity() {
             duration = 1000
         }
         scale.start()
+    }
+
+    fun rotateAnimation() {
+        val rotate = ObjectAnimator.ofFloat(bindingMain.textViewAppTitle, "rotation",0.0f,360.0f).apply {
+            duration = 3000
+        }
+        rotate.start()
     }
 }

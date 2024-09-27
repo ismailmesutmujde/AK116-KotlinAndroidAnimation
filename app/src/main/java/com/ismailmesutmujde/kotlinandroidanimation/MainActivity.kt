@@ -17,11 +17,16 @@ class MainActivity : AppCompatActivity() {
         val view = bindingMain.root
         setContentView(view)
 
+        buttonFromBottomToTop()
+        textFromRightToLeft()
+        imageFromLeftToRight()
+
         bindingMain.buttonStart.setOnClickListener {
             //Toast.makeText(applicationContext, "TEST", Toast.LENGTH_SHORT).show()
             //alphaAnimation()
             //scaleAnimation()
-            rotateAnimation()
+            //rotateAnimation()
+            translationAnimation()
         }
 
     }
@@ -45,5 +50,32 @@ class MainActivity : AppCompatActivity() {
             duration = 3000
         }
         rotate.start()
+    }
+    fun translationAnimation() {
+        val translation = ObjectAnimator.ofFloat(bindingMain.textViewAppTitle, "translationY",0.0f,-50.0f).apply {
+            duration = 3000
+        }
+        translation.start()
+    }
+
+    fun buttonFromBottomToTop() {
+        val translation = ObjectAnimator.ofFloat(bindingMain.buttonStart, "translationY",800.0f, 0.0f).apply {
+            duration = 1000
+        }
+        translation.start()
+    }
+
+    fun textFromRightToLeft() {
+        val translation = ObjectAnimator.ofFloat(bindingMain.textViewAppTitle, "translationX",800.0f, 0.0f).apply {
+            duration = 1000
+        }
+        translation.start()
+    }
+
+    fun imageFromLeftToRight() {
+        val translation = ObjectAnimator.ofFloat(bindingMain.imageViewAppLogo, "translationX",-800.0f, 0.0f).apply {
+            duration = 1000
+        }
+        translation.start()
     }
 }

@@ -7,6 +7,10 @@ android {
     namespace = "com.ismailmesutmujde.kotlinandroidanimation"
     compileSdk = 34
 
+    buildFeatures {
+        viewBinding = true
+    }
+
     defaultConfig {
         applicationId = "com.ismailmesutmujde.kotlinandroidanimation"
         minSdk = 24

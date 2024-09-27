@@ -19,7 +19,8 @@ class MainActivity : AppCompatActivity() {
 
         bindingMain.buttonStart.setOnClickListener {
             //Toast.makeText(applicationContext, "TEST", Toast.LENGTH_SHORT).show()
-            alphaAnimation()
+            //alphaAnimation()
+            scaleAnimation()
         }
 
     }
@@ -29,5 +30,12 @@ class MainActivity : AppCompatActivity() {
             duration = 3000
         }
         alpha.start()
+    }
+
+    fun scaleAnimation() {
+        val scale = ObjectAnimator.ofFloat(bindingMain.imageViewAppLogo, "scaleY",1.0f,0.5f).apply {
+            duration = 1000
+        }
+        scale.start()
     }
 }

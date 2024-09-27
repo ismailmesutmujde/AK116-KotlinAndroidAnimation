@@ -1,5 +1,6 @@
 package com.ismailmesutmujde.kotlinandroidanimation
 
+import android.animation.AnimatorSet
 import android.animation.ObjectAnimator
 import android.os.Bundle
 import android.view.animation.BounceInterpolator
@@ -30,7 +31,9 @@ class MainActivity : AppCompatActivity() {
             //translationAnimation()
             //delayFeature()
             //accelerationFeature()
-            repeatFeature()
+            //repeatFeature()
+            //multiAnimation()
+            consecutiveAnimation()
         }
 
     }
@@ -108,5 +111,29 @@ class MainActivity : AppCompatActivity() {
             repeatMode = ObjectAnimator.REVERSE
         }
         translation.start()
+    }
+
+    fun multiAnimation() {
+        val alpha = ObjectAnimator.ofFloat(bindingMain.imageViewAppLogo, "alpha",1.0f, 0.0f)
+        val scaleX = ObjectAnimator.ofFloat(bindingMain.imageViewAppLogo, "scaleX",1.0f, 2.0f)
+        val scaleY = ObjectAnimator.ofFloat(bindingMain.imageViewAppLogo, "scaleY",1.0f, 3.0f)
+
+        val multi = AnimatorSet().apply {
+            duration = 1000
+            playTogether(alpha, scaleX,scaleY)
+        }
+        multi.start()
+    }
+
+    fun consecutiveAnimation() {
+        val alpha = ObjectAnimator.ofFloat(bindingMain.imageViewAppLogo, "alpha",1.0f, 0.0f)
+        val scaleX = ObjectAnimator.ofFloat(bindingMain.imageViewAppLogo, "scaleX",1.0f, 2.0f)
+        val scaleY = ObjectAnimator.ofFloat(bindingMain.imageViewAppLogo, "scaleY",1.0f, 3.0f)
+
+        val multi = AnimatorSet().apply {
+            duration = 1000
+            playSequentially(scaleX,scaleY, alpha)
+        }
+        multi.start()
     }
 }
